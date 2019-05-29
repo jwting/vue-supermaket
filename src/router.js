@@ -7,7 +7,7 @@ import ShopcatContainer from './components/tabbar/ShopcatContainer.vue'
 import SerachContainer from './components/tabbar/SerachContainer.vue'
 import NewsList from './components/news/NewsList.vue'
 import NewsInfo from './components/news/NewsInfo.vue'
-import comment from './components/subcomponents/comment.vue'
+
 
 const router = new VueRouter({
     routes: [

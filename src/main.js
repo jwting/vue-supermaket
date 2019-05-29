@@ -22,10 +22,10 @@ Vue.http.options.root = 'http://www.liulongbin.top:3005';
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 
-import { Swipe, SwipeItem } from 'mint-ui';
+import { Swipe, SwipeItem,Button } from 'mint-ui';
 
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Swipe.name, Swipe,Button);
+Vue.component(SwipeItem.name, SwipeItem,Button);
 
 Vue.use(MintUI)
 

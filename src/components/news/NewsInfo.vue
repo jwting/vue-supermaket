@@ -1,5 +1,7 @@
 <template>
   <div class="newsinfo-container">
+
+    <!-- 标题 -->
     <h3 class="title">{{newsinfo.title}} </h3>
     <p class="subtitle">
       <span>发表时间：{{newsinfo.add_time | dataFormat}}</span>
@@ -8,11 +10,13 @@
     <hr>
 
     <div class="content" v-html="newsinfo.content"></div>
+    <!-- 评论子组件 -->
+    <comment-box :id="this.id"></comment-box>
   </div>
 </template>
 
 <script>
-import { Toast } from "mint-ui";
+import comment from '../subcomponents/comment.vue'
 export default {
   data() {
     return {
@@ -28,12 +32,15 @@ export default {
       this.$http.get('api/getnew/'+this.id).then(result => {
         if (result.body.status === 0) {
           this.newsinfo = result.body.message[0];
-          console.log(result.body);
+          // console.log(result.body);
         } else {
-          Toast("获取失败");
+          alert("获取失败");
         }
       });
     }
+  },
+  components:{      //用来注册子组件的
+    'comment-box':comment
   }
 };
 </script>
