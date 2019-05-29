@@ -5,11 +5,18 @@ import VueRouter from 'vue-router'
 // 1.2安装路由
 Vue.use(VueRouter)
 
+import moment from 'moment'
+
+//定义全局的过滤器
+Vue.filter('dataFormat',function(dataStr,pattern="YYYY-MM-DD  HH:mm:ss"){
+ return moment(dataStr).format(pattern)
+})
+
 // 1.1导入  VueResource
 import VueResource from 'vue-resource'
 // 1.2安装   VueResource
 Vue.use(VueResource)
-
+Vue.http.options.root = 'http://www.liulongbin.top:3005';
 
 // 按需导入mint-UI中的组件
 import MintUI from 'mint-ui'

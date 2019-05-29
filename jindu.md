@@ -23,3 +23,21 @@
 
   ##加载首页轮播图数据
   1.获取数据，使用vue-resource
+
+##新闻资讯页面制作
+1.绘制界面，使用MUI中的media-list.html
+2.使用 vue-resource 获取数据
+3.渲染真实数据
+
+##实现新闻资讯列表  点击跳转到新闻详情
+1.把列表中的每一项改造为  router-link  同时在跳转的时候应该提供唯一的id标识符
+2.创建新闻详情的组件页面  NewsInfo.vue
+3.在路由模块中将新闻详情的路由地址和组件页面对应起来
+
+##实现新闻详情的页面布局和数据渲染
+
+##单独封装一个comment.vue组件
+1.先创建一个单独的comment.vue组件模板
+2.再需要使用comment 组件的页面中，先手动导入comment组件
+    import comment from './comment.vue'
+3.在父组件中，使用 components  属性，将刚才导入的  comment  组件  注册为自己的子组件
