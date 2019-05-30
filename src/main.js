@@ -17,7 +17,8 @@ import VueResource from 'vue-resource'
 // 1.2安装   VueResource
 Vue.use(VueResource)
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
-
+// 全局设置 post 时候表单数据格式组织形式
+Vue.http.options.emulateJSON = true;
 // 按需导入mint-UI中的组件
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'

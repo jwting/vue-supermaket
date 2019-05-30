@@ -2,8 +2,8 @@
   <div class="cmt-container">
     <h3>发表评论</h3>
     <hr>
-    <textarea placeholder="请输入要吐槽的内容，最多不超过120个字" maxlength="120"></textarea>
-    <mt-button type="primary" size="large">发表评论</mt-button>
+    <textarea placeholder="请输入要吐槽的内容，最多不超过120个字" maxlength="120" v-model="msg"></textarea>
+    <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item,i) in comments" :key="i">
         <div
@@ -22,14 +22,16 @@ export default {
   data() {
     return {
       pageIndex: 1,
-      comments: []
+      comments: [],
+      msg: "" //评论输入的内容
     };
   },
   created() {
     this.getComments();
   },
   methods: {
-    getComments() {     //获取评论
+    getComments() {
+      //获取评论
       this.$http
         .get("api/getcomments/" + this.id + "?pageindex=" + this.pageIndex)
         .then(result => {
@@ -37,7 +39,7 @@ export default {
             // this.comments = result.body.message;
 
             //每当获取新评论数据的时候，不要把老数据清空覆盖，而是以老数据拼接上新数据
-            this.comments=this.comments.concat(result.body.message);
+            this.comments = this.comments.concat(result.body.message);
             //   console.log(result.body);
             console.log("获取成功");
           } else {
@@ -45,10 +47,32 @@ export default {
           }
         });
     },
-    getMore(){      //加载更多
-    this.pageIndex++;
-    this.getComments();
+    getMore() {
+      //加载更多
+      this.pageIndex++;
+      this.getComments();
+    },
+    postComment() {
+      if (this.msg.trim().length === 0) {
+        return alert("评论内容不能为空");
+      }
 
+      //发表评论
+      this.$http
+        .post("api/postcomment/" + this.$route.params.id, {
+          content: this.msg.trim()
+        })
+        .then(function(result) {
+          if (result.body.status === 0) {
+            var cmt = {
+              user_name: "匿名用户",
+              add_time: Date.now(),
+              content: this.msg.trim()
+            };
+            this.comments.unshift(cmt)
+            this.msg="";
+          }
+        });
     }
   },
   props: ["id"]

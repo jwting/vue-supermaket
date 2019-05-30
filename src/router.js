@@ -7,6 +7,7 @@ import ShopcatContainer from './components/tabbar/ShopcatContainer.vue'
 import SerachContainer from './components/tabbar/SerachContainer.vue'
 import NewsList from './components/news/NewsList.vue'
 import NewsInfo from './components/news/NewsInfo.vue'
+import PhotoList from './components/photo/PhotoList.vue'
 
 
 const router = new VueRouter({
@@ -17,7 +18,8 @@ const router = new VueRouter({
       {path:'/shopcar',component:ShopcatContainer},
       {path:'/search',component:SerachContainer},
       {path:'/home/newslist',component:NewsList},
-      {path:'/home/newsinfo/:id',component:NewsInfo}
+      {path:'/home/newsinfo/:id',component:NewsInfo},
+      {path:'/home/photolist',component:PhotoList}
     ],
     linkActiveClass:'mui-active'
   
