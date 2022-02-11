@@ -10,7 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "ajv": "^6.9.1",
+    "ajv": "^6.12.3",
     "mint-ui": "^2.2.13",
     "moment": "^2.24.0",
     "vue": "^2.5.2",
